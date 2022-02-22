@@ -7,21 +7,19 @@ import { CreateTaskDto } from './dto/create-tasks-dto';
 export class TasksService {
   private tasks: Task[] = [];
 
-  getAllTasks() {
+  getAllTasks(): Task[] {
     return this.tasks;
   }
 
-  getTaskById(taskId: string) {
+  getTaskById(taskId: string): Task {
     return this.tasks.find((task) => task.id === taskId);
   }
 
-  deleteTaskById(taskId: string) {
-    const task = this.tasks.find((task) => task.id === taskId);
+  deleteTaskById(taskId: string): void {
     this.tasks = this.tasks.filter((task) => task.id !== taskId);
-    return task;
   }
 
-  createTask(createTaskDto: CreateTaskDto) {
+  createTask(createTaskDto: CreateTaskDto): Task {
     const { title, description } = createTaskDto;
     const task: Task = {
       id: uuid(),
