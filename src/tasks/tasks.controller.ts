@@ -7,7 +7,7 @@ import {
   Patch,
   Post,
 } from '@nestjs/common';
-import { CreateTaskDto } from './dto/create-tasks-dto';
+import { CreateTaskDto } from './dto/create-tasks.dto';
 import { Task, TaskStatus } from './task.model';
 import { TasksService } from './tasks.service';
 
