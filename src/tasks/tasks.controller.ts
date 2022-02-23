@@ -42,7 +42,6 @@ export class TasksController {
     @Param('id') id: string,
     @Body('status') status: TaskStatus,
   ): Task {
-    console.log(status);
     return this.tasksService.updateTaskStatus(id, status);
   }
 
