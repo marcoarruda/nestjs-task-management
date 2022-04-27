@@ -15,9 +15,24 @@ export class TasksService {
 
   async getTaskById(id: string): Promise<Task> {
     const found = await this.tasksRepository.findOne(id);
+    console.log(found);
     if (!found) {
       throw new NotFoundException(`Task with ID "${id} not found`);
     }
     return found;
+  }
+
+  async createTask(createTaskDto: CreateTaskDto): Promise<Task> {
+    const { title, description } = createTaskDto;
+
+    const task = this.tasksRepository.create({
+      title,
+      description,
+      status: TaskStatus.OPEN,
+    });
+
+    await this.tasksRepository.save(task);
+
+    return task;
   }
 }
